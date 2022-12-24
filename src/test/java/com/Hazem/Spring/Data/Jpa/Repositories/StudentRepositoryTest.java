@@ -1,5 +1,7 @@
 package com.Hazem.Spring.Data.Jpa.Repositories;
 
+import java.util.List;
+
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -24,6 +26,13 @@ class StudentRepositoryTest {
 				.build() ; 	
 		
 		studentRepository.save(student);
+	}
+	
+	@Test
+	public void getAllStudents() {
+		List<Student> studentsList = studentRepository.findAll();
+		System.out.println("StudentList = " + studentsList);
+	
 	}
 
 }
