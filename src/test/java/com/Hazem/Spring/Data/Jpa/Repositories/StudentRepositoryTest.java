@@ -13,66 +13,53 @@ import com.Hazem.Spring.Data.Jpa.Entities.Student;
 class StudentRepositoryTest {
 
 	@Autowired
-	private StudentRepository studentRepository ; 
-	
+	private StudentRepository studentRepository;
+
 	@Test
 	public void saveStudent() {
-		Student student = Student.builder()
-				.email("marzouki.contact@gmail.com")
-				.firstName("Hazem")
-				.LastName("Marzouki")
-				.build() ; 	
-		
+		Student student = Student.builder().email("marzouki.contact@gmail.com").firstName("Hazem").LastName("Marzouki")
+				.build();
+
 		studentRepository.save(student);
 	}
-	
+
 	@Test
 	public void saveStudentWithGardian() {
-			
-		Guardian guardian = Guardian.builder()
-				.email("sarra@yahoo.com")
-				.name("Sarah")
-				.mobile("989898989")
-				.build();
-		
-		Student student = Student.builder()
-				.email("potter@gmail.com")
-				.firstName("John")
-				.LastName("Doe")
-				.guardian(guardian)
-				.build() ; 	
-	
+
+		Guardian guardian = Guardian.builder().email("sarra@yahoo.com").name("Sarah").mobile("989898989").build();
+
+		Student student = Student.builder().email("potter@gmail.com").firstName("John").LastName("Doe")
+				.guardian(guardian).build();
+
 		studentRepository.save(student);
 	}
-	
+
 	@Test
 	public void getAllStudents() {
 		List<Student> studentsList = studentRepository.findAll();
 		System.out.println("StudentList = " + studentsList);
-	
+
 	}
-	
+
 	@Test
 	public void printStudentByFirstname() {
 		List<Student> students = studentRepository.findByFirstName("John");
 		System.out.println("StudentList = " + students);
 
 	}
-	
-	@Test 
+
+	@Test
 	public void printStudentByFirstnameContaining() {
 		List<Student> students = studentRepository.findByFirstNameContaining("Jo");
 		System.out.println("StudentList = " + students);
 
 	}
-	
-	@Test 
+
+	@Test
 	public void printStudentByGuardianName() {
 		List<Student> students = studentRepository.findByGuardianName("Sarah");
 		System.out.println("StudentList = " + students);
 
 	}
-	
-	
 
 }
