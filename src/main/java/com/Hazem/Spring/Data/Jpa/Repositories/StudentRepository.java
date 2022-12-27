@@ -11,5 +11,5 @@ import com.Hazem.Spring.Data.Jpa.Entities.Student;
 public interface StudentRepository extends JpaRepository<Student, Long> {
 
 	 public List<Student> findByFirstName(String firstName);
-	 public List<Student> findByFirstNameContaining(String firstName);
+	 public List<Student> findByFirstNameContaining(String name);
 }
