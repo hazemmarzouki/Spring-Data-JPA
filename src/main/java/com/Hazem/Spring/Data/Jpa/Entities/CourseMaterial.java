@@ -1,6 +1,8 @@
 package com.Hazem.Spring.Data.Jpa.Entities;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -11,12 +13,14 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 @Entity
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
+@ToString(exclude = "course")
 public class CourseMaterial {
 
 	@Id
@@ -25,7 +29,10 @@ public class CourseMaterial {
 	private Long courseMaterialId;
 	private String url;
 
-	@OneToOne
+	@OneToOne(
+	cascade = CascadeType.ALL , 
+	fetch = FetchType.LAZY
+			)
 	@JoinColumn(name = "course_id", referencedColumnName = "courseId")
 	private Course course;
 }
