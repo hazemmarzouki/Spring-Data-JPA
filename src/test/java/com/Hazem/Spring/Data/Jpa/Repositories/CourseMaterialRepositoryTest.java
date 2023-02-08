@@ -27,13 +27,14 @@ class CourseMaterialRepositoryTest {
 		
 		CourseMaterial courseMaterial = 
 			CourseMaterial.builder()
-			.url("www.SpringDataJpaCouse.tn")
+			.url("www.SpringDataJpaCourse.tn")
 			.course(course)
 			.build();
 		
 		repository.save(courseMaterial);
 	}
 	
+	@Test
 	public void printAllCourseMaterials() {
 		List<CourseMaterial> courseMaterials = 
 				repository.findAll();
